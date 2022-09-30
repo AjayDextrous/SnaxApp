@@ -4,6 +4,7 @@ build/
 
 # Local configuration file (sdk path, etc)
 local.properties
+.DS_Store
 
 # Log/OS Files
 *.log
@@ -14,6 +15,7 @@ captures/
 .cxx/
 *.apk
 output.json
+app/build/
 
 # IntelliJ
 *.iml
