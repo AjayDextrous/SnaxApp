@@ -61,4 +61,5 @@
     <string name="your_weight">Weight (kg)</string>
     <string name="continue_next">Continue</string>
     <string name="take_photo">Take Photo</string>
+    <string name="users_grocery">%s\'s Grocery</string>
 </resources>

@@ -43,6 +43,7 @@
         android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/height_edittext"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_text_height"
             android:inputType="number"
@@ -56,6 +57,7 @@
         android:layout_marginBottom="32dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/weight_edittext"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edit_text_height"
             android:inputType="number"

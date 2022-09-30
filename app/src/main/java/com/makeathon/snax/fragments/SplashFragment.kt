@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.makeathon.snax.R
 import com.makeathon.snax.databinding.FragmentCameraBinding
 import com.makeathon.snax.databinding.FragmentSplashBinding
+import com.makeathon.snax.viewmodels.ActivityViewModel
 
 class SplashFragment : Fragment() {
 
@@ -18,7 +19,7 @@ class SplashFragment : Fragment() {
         fun newInstance() = SplashFragment()
     }
 
-    private lateinit var viewModel: SplashViewModel
+    private lateinit var viewModel: ActivityViewModel
 
     private var _fragmentSplashBinding: FragmentSplashBinding? = null
 
@@ -45,8 +46,7 @@ class SplashFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProvider(requireActivity()).get(ActivityViewModel::class.java)
     }
 
     private fun navigateToForm() {

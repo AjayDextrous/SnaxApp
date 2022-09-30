@@ -1,5 +1,6 @@
 package com.makeathon.snax.fragments
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.makeathon.snax.R
 import com.makeathon.snax.databinding.FragmentDetailsFormBinding
+import com.makeathon.snax.viewmodels.ActivityViewModel
 
 class DetailsFormFragment : Fragment() {
 
@@ -17,7 +19,7 @@ class DetailsFormFragment : Fragment() {
         fun newInstance() = DetailsFormFragment()
     }
 
-    private lateinit var viewModel: DetailsFormViewModel
+    private lateinit var viewModel: ActivityViewModel
     private var _fragmentDetailsFormBinding: FragmentDetailsFormBinding? = null
 
     private val fragmentDetailsFormBinding
@@ -35,14 +37,35 @@ class DetailsFormFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fragmentDetailsFormBinding.continueButton.setOnClickListener {
+            saveDetails()
             navigateToCamera()
         }
     }
 
+    private fun saveDetails() {
+        val name = fragmentDetailsFormBinding.nameEdittext.text.toString().run {
+            ifBlank {
+                "User"
+            }
+        }
+        val age = fragmentDetailsFormBinding.ageEdittext.text.toString().toIntOrNull()?:18
+        val height = fragmentDetailsFormBinding.heightEdittext.text.toString().toIntOrNull()?:175
+        val weight = fragmentDetailsFormBinding.weightEdittext.text.toString().toIntOrNull()?:75
+
+        viewModel.userDetails = ActivityViewModel.UserDetails(name, age, height, weight)
+
+        val editor = requireContext().getSharedPreferences(getString(R.string.snax_prefs), Context.MODE_PRIVATE).edit()
+        editor.putString("USER_NAME", name)
+        editor.putInt("USER_AGE", age)
+        editor.putInt("USER_HEIGHT", height)
+        editor.putInt("USER_WEIGHT", weight)
+        editor.putBoolean(getString(R.string.is_user_details_given), true)
+        editor.apply()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(DetailsFormViewModel::class.java)
-        // TODO: Use the ViewModel
+        viewModel = ViewModelProvider(requireActivity()).get(ActivityViewModel::class.java)
     }
 
     private fun navigateToCamera() {

@@ -1,21 +1,7 @@
-/*
- * Copyright 2022 The TensorFlow Authors. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *             http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package com.makeathon.snax.fragments
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -25,30 +11,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.Toast
-import androidx.camera.core.AspectRatio
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.*
 import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
-import androidx.camera.core.ImageProxy
-import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
-import java.util.LinkedList
-import java.util.concurrent.ExecutorService
-import java.util.concurrent.Executors
 import com.makeathon.snax.ObjectDetectorHelper
 import com.makeathon.snax.R
 import com.makeathon.snax.databinding.FragmentCameraBinding
+import com.makeathon.snax.viewmodels.ActivityViewModel
 import org.tensorflow.lite.task.vision.detector.Detection
+import java.util.*
+import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
     private val TAG = "ObjectDetection"
 
     private var _fragmentCameraBinding: FragmentCameraBinding? = null
+    private lateinit var viewModel: ActivityViewModel
 
     private val fragmentCameraBinding
         get() = _fragmentCameraBinding!!
@@ -57,6 +42,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     private lateinit var bitmapBuffer: Bitmap
     private var preview: Preview? = null
     private var imageAnalyzer: ImageAnalysis? = null
+    private lateinit var imageCapture: ImageCapture
     private var camera: Camera? = null
     private var cameraProvider: ProcessCameraProvider? = null
 
@@ -95,6 +81,8 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel = ViewModelProvider(requireActivity()).get(ActivityViewModel::class.java)
+        loadUserDetails()
         objectDetectorHelper = ObjectDetectorHelper(
             context = requireContext(),
             objectDetectorListener = this)
@@ -110,6 +98,25 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
         // Attach listeners to UI control widgets
         initBottomSheetControls()
+
+        fragmentCameraBinding.takePhoto.setOnClickListener {
+            takePhoto()
+        }
+    }
+
+    private fun loadUserDetails() {
+        if (viewModel.userDetails == null) {
+            val prefs = requireContext().getSharedPreferences(
+                getString(R.string.snax_prefs),
+                Context.MODE_PRIVATE
+            )
+            viewModel.userDetails = ActivityViewModel.UserDetails(
+                prefs.getString("USER_NAME", "User")!!,
+                prefs.getInt("USER_AGE", 18),
+                prefs.getInt("USER_HEIGHT", 175),
+                prefs.getInt("USER_WEIGHT", 75)
+            )
+        }
     }
 
     private fun initBottomSheetControls() {
@@ -265,13 +272,18 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                     }
                 }
 
+        imageCapture = ImageCapture.Builder()
+            .setTargetRotation(fragmentCameraBinding.viewFinder.display.rotation)
+            .build()
+        Log.d("SNAXAPP", "fragRot: ${fragmentCameraBinding.viewFinder.display.rotation}")
+
         // Must unbind the use-cases before rebinding them
         cameraProvider.unbindAll()
 
         try {
             // A variable number of use-cases can be passed here -
             // camera provides access to CameraControl & CameraInfo
-            camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalyzer)
+            camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalyzer, imageCapture)
 
             // Attach the viewfinder's surface provider to preview use case
             preview?.setSurfaceProvider(fragmentCameraBinding.viewFinder.surfaceProvider)
@@ -303,24 +315,54 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
       imageWidth: Int
     ) {
         activity?.runOnUiThread {
-            fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
+            _fragmentCameraBinding?.bottomSheetLayout?.inferenceTimeVal?.text =
                             String.format("%d ms", inferenceTime)
 
             // Pass necessary information to OverlayView for drawing on the canvas
-            fragmentCameraBinding.overlay.setResults(
+            _fragmentCameraBinding?.overlay?.setResults(
                 results ?: LinkedList<Detection>(),
                 imageHeight,
                 imageWidth
             )
 
+            if (results != null) {
+                viewModel.updateResults(results, imageHeight, imageWidth)
+            }
+
             // Force a redraw
-            fragmentCameraBinding.overlay.invalidate()
+            _fragmentCameraBinding?.overlay?.invalidate()
         }
     }
 
     override fun onError(error: String) {
         activity?.runOnUiThread {
             Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun takePhoto() {
+        imageCapture.takePicture( cameraExecutor,
+            object : ImageCapture.OnImageCapturedCallback() {
+                override fun onCaptureSuccess(image: ImageProxy) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(requireContext(), "Photo Captured Successfully", Toast.LENGTH_SHORT).show()
+                        viewModel.setCapturedImage(image)
+                        navigateToAnalysisScreen()
+                    }
+                }
+                override fun onError(exception: ImageCaptureException) {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(requireContext(), "Error ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            })
+    }
+
+    private fun navigateToAnalysisScreen() {
+        lifecycleScope.launchWhenStarted {
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
+                CameraFragmentDirections.actionCameraToAnalysys())
         }
     }
 }
