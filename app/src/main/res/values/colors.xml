@@ -20,9 +20,24 @@
     <color name="bounding_box_color">#FF6F00</color>
     <color name="toolbar_background">#EEEEEE</color>
     <color name="ic_launcher_background">#FFFFFF</color>
-    <color name="bottom_sheet_background">#EEEEEE</color>
+    <color name="bottom_sheet_background">@color/zimgur_blue_300</color>
     <color name="bottom_sheet_text_color">@android:color/black</color>
     <color name="icActive">#FFFFFFFF</color>
     <color name="icFocused">#DDFFFFFF</color>
     <color name="icPressed">#AAFFFFFF</color>
+
+    <color name="zimgur_blue_50">#eef0f2</color>
+    <color name="zimgur_blue_200">#adc0cb</color>
+    <color name="zimgur_blue_300">#8da6b5</color>
+    <color name="zimgur_blue_800">#344955</color>
+    <color name="zimgur_blue_900">#23343e</color>
+
+    <color name="zimgur_yellow_100">#fcecb3</color>
+    <color name="zimgur_yellow_200">#fadf82</color>
+    <color name="zimgur_yellow_500">#f7c00b</color>
+    <color name="zimgur_yellow_600">#f7b201</color>
+
+    <color name="zimgur_red_200">#cf7779</color>
+    <color name="zimgur_red_400">#ff4c5d</color>
+    <color name="title_text_color">#A9A9A9</color>
 </resources>

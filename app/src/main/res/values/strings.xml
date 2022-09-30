@@ -59,4 +59,6 @@
     <string name="your_age">Your Age</string>
     <string name="your_height">Height (cm)</string>
     <string name="your_weight">Weight (kg)</string>
+    <string name="continue_next">Continue</string>
+    <string name="take_photo">Take Photo</string>
 </resources>

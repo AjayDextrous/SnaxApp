@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import com.makeathon.snax.R
 import com.makeathon.snax.databinding.FragmentDetailsFormBinding
 
@@ -31,12 +33,23 @@ class DetailsFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        fragmentDetailsFormBinding.continueButton.setOnClickListener {
+            navigateToCamera()
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(DetailsFormViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+    private fun navigateToCamera() {
+        lifecycleScope.launchWhenStarted {
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
+                DetailsFormFragmentDirections.actionDetailsToCamera())
+        }
     }
 
 }

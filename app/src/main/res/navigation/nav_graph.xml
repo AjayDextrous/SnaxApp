@@ -54,6 +54,12 @@
         android:name="com.makeathon.snax.fragments.DetailsFormFragment"
         android:label="EnterDetailsFragment">
 
+        <action
+            android:id="@+id/action_details_to_camera"
+            app:destination="@id/camera_fragment"
+            app:popUpTo="@id/enter_details"
+            app:popUpToInclusive="true" />
+
     </fragment>
 
     <fragment

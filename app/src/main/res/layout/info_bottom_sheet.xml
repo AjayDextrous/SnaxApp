@@ -18,7 +18,7 @@
     android:id="@+id/bottom_sheet_layout"
     android:layout_width="match_parent"
     android:layout_gravity="center_horizontal"
-    android:background="@color/bottom_sheet_background"
+    android:background="@drawable/bottom_sheet_background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     android:padding="@dimen/bottom_sheet_padding"
@@ -36,13 +36,14 @@
         <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/icn_chevron_up"
-                android:contentDescription="@string/alt_bottom_sheet_chevron" />
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/alt_bottom_sheet_chevron"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="@android:color/white" />
         </RelativeLayout>
 
         <!-- Inference time row -->

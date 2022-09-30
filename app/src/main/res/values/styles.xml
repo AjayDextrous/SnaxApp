@@ -17,21 +17,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!--   Primary Color -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <!--   darker variant for the status bar and contextual app bars -->
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <!--   theme UI controls like checkboxes and text fields -->
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
     </style>
 
     <style name="BottomSheetSpinnerItemStyle" parent="Widget.AppCompat.Light.DropDownItem.Spinner">
         <item name="android:textSize">@dimen/bottom_sheet_text_size</item>
     </style>
 
-    <color name="colorPrimary">#000000</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#000000</color>
+    <style name="rounded_fab">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
     
 </resources>

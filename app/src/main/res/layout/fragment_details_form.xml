@@ -5,19 +5,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/cardview_dark_background"
-    android:padding="16dp"
+    android:padding="24dp"
     android:orientation="vertical"
     tools:context=".fragments.DetailsFormFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/name_edittext"
             android:layout_width="match_parent"
-            android:textColor="@android:color/white"
-
+            android:inputType="textPersonName"
             android:layout_height="@dimen/edit_text_height"
             android:hint="@string/your_name"/>
 
@@ -25,7 +25,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/age_edittext"
@@ -38,7 +39,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -50,7 +52,8 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -59,6 +62,13 @@
             android:hint="@string/your_weight"/>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/continue_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/continue_next"/>
 
 
 </LinearLayout>
