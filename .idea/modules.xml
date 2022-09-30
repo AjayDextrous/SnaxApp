@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Snax.iml" filepath="$PROJECT_DIR$/.idea/modules/Snax.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Snax.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Snax.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Snax.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Snax.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Snax.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Snax.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Snax.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Snax.app.unitTest.iml" />
+    </modules>
+  </component>
+</project>
