@@ -43,11 +43,20 @@ class PermissionsFragment : Fragment() {
             val isUserDetailsGiven = requireContext().getSharedPreferences(getString(R.string.snax_prefs), Context.MODE_PRIVATE).getBoolean(getString(R.string.is_user_details_given), false)
             Log.d(TAG, "isUserDetailsGiven: $isUserDetailsGiven")
             if (isGranted) {
+
+
+
                 Toast.makeText(context, "Permission request granted", Toast.LENGTH_LONG).show()
-                if(isUserDetailsGiven){
-                    navigateToCamera()
+
+                // debug code for chart dev
+                if(isChartDebuggingOn){
+                    navigateToChart()
                 } else {
-                    navigateToSplash()
+                    if(isUserDetailsGiven){
+                        navigateToCamera()
+                    } else {
+                        navigateToSplash()
+                    }
                 }
 
             } else {
@@ -63,10 +72,15 @@ class PermissionsFragment : Fragment() {
                 Manifest.permission.CAMERA
             ) == PackageManager.PERMISSION_GRANTED -> {
                 val isUserDetailsGiven = requireContext().getSharedPreferences(getString(R.string.snax_prefs), Context.MODE_PRIVATE).getBoolean(getString(R.string.is_user_details_given), false)
-                if(isUserDetailsGiven){
-                    navigateToCamera()
+                // debug code for chart dev
+                if(isChartDebuggingOn){
+                    navigateToChart()
                 } else {
-                    navigateToSplash()
+                    if(isUserDetailsGiven){
+                        navigateToCamera()
+                    } else {
+                        navigateToSplash()
+                    }
                 }
             }
             else -> {
@@ -90,9 +104,17 @@ class PermissionsFragment : Fragment() {
         }
     }
 
+    private fun navigateToChart() {
+        lifecycleScope.launchWhenStarted {
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
+                PermissionsFragmentDirections.actionPermissionsToChart())
+        }
+    }
+
     companion object {
 
         const val TAG = "SNAXAPP"
+        const val isChartDebuggingOn = true
 
         /** Convenience method used to check if all permissions required by this app are granted */
         fun hasPermissions(context: Context) = PERMISSIONS_REQUIRED.all {
