@@ -29,19 +29,17 @@ public class MPChartTestFragmentJava extends AppCompatActivity {
     }
 
     private void creatingCategories(){
-        categories.put("energy", 0);
-        categories.put("fat", 0);
-        categories.put("carbohydrates", 0);
-        categories.put("sugar", 0);
+        categories.put("calories", 0);
         categories.put("protein", 0);
-        categories.put("salt", 0);
+        categories.put("carbs", 0);
+        categories.put("sugar", 0);
+        categories.put("fat", 0);
 
-        lastUpdate.put("energy", 0);
-        lastUpdate.put("fat", 0);
-        lastUpdate.put("carbohydrates", 0);
-        lastUpdate.put("sugar", 0);
+        lastUpdate.put("calories", 0);
         lastUpdate.put("protein", 0);
-        lastUpdate.put("salt", 0);
+        lastUpdate.put("carbs", 0);
+        lastUpdate.put("sugar", 0);
+        lastUpdate.put("fat", 0);
     }
 
     //updating old nutrition values by adding new values
