@@ -47,7 +47,7 @@ class AnalysisFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(requireActivity()).get(ActivityViewModel::class.java)
 
-        fragmentAnalysisBinding.imageTitle.text = getString(R.string.users_grocery, viewModel.userDetails?.name?.split(" ")?.get(0))
+        fragmentAnalysisBinding.imageTitle.text = getString(R.string.users_grocery, viewModel.userDetails.value?.name?.split(" ")?.get(0))
 
         image = viewModel.retrieveCapturedImage()
         fragmentAnalysisBinding.capturedImage.setImageBitmap(image?.let { imageProxyToBitmap(it) })

@@ -1,0 +1,7 @@
+Item,Calories,Protein,Carbs,Sugar,Fat,Fat_Saturated,Alternative
+Apple,52,1,14,11,0.2,0,
+Banana,330,3,84,45,0,0,
+Oatmeal,1805,105,240,6,25,6,
+Cereals,1244,24.3,300,250,30,10,Oatmeal
+Pizza,900,30,100,14,40,20,Fish
+Fish,590,150,0,0,24,8,

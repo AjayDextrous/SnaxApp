@@ -32,6 +32,9 @@
             android:src="@drawable/ic_baseline_camera_24"
             app:fabCustomSize="70dp"
             app:maxImageSize="64dp"
+            android:backgroundTint="@color/primaryDarkColor"
+            android:foregroundTint="@android:color/white"
+            android:foregroundTintMode="src_over"
             app:shapeAppearanceOverlay="@style/rounded_fab"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,16 +48,82 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            android:contentDescription="@string/take_photo"
+            android:contentDescription="@string/settings"
             android:src="@drawable/ic_baseline_settings_24"
             app:backgroundTint="@color/zimgur_blue_900"
-            android:foregroundTint="@color/zimgur_blue_300"
+            android:foregroundTint="@android:color/white"
+            android:foregroundTintMode="src_over"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/days_count_card"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/primaryColor"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/settings"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/shopping_days_edittext"
+                    android:background="@drawable/editdays_outline"
+                    android:layout_width="44dp"
+                    android:hint="2"
+                    android:textColor="@color/primaryDarkColor"
+                    android:textColorHint="@color/primaryColor"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:maxLength="2"
+                    android:layout_height="42dp"/>
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="6dp"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="1"
+                    android:text=" days of Shopping"/>
+
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/chart_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/days_count_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            <fragment
+                android:id="@+id/chart_frag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:name="com.makeathon.snax.fragments.MPChartTestFragmentJava"
+                />
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
         android:id="@+id/bottom_sheet_layout"
-        layout="@layout/info_bottom_sheet" />
+        layout="@layout/list_bottom_sheet" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

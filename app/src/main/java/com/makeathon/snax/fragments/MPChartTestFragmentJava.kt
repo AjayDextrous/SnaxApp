@@ -71,6 +71,16 @@ class MPChartTestFragmentJava : Fragment() {
         lastUpdate = HashMap()
         creatingCategories()
         createChart()
+
+        fragmentMPChartTestBinding.root.setOnClickListener {
+            if(fragmentMPChartTestBinding.barChart.visibility == View.VISIBLE){
+                fragmentMPChartTestBinding.barChart.visibility = View.GONE
+                fragmentMPChartTestBinding.macrosLayout.visibility = View.VISIBLE
+            } else {
+                fragmentMPChartTestBinding.barChart.visibility = View.VISIBLE
+                fragmentMPChartTestBinding.macrosLayout.visibility = View.GONE
+            }
+        }
     }
 
     //updating old nutrition values by adding new values
@@ -127,6 +137,8 @@ class MPChartTestFragmentJava : Fragment() {
 
         val description = Description()
         description.text = ""
+        fragmentMPChartTestBinding.barChart.setTouchEnabled(false)
+        fragmentMPChartTestBinding.barChart.isDragEnabled = false
         fragmentMPChartTestBinding.barChart.legend.isEnabled = false
         fragmentMPChartTestBinding.barChart.description = description
         fragmentMPChartTestBinding.barChart.setDrawGridBackground(false)

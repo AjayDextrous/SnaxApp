@@ -56,4 +56,11 @@
     <string name="user_height">"Height: <b>%d"</b>"</string>
     <string name="user_goals">Goals</string>
     <string name="daily_activitiy">Daily Activity</string>
+    <string name="settings">settings</string>
+    <string name="muscle">Muscle</string>
+    <string name="diet">Diet</string>
+    <string name="maintain">Maintain</string>
+    <string name="user_target">Your current target is %s</string>
+    <string name="user_activity">You are active for <b>%d</b> hours</string>
+    <string name="your_activity">Daily activity (in hours)</string>
 </resources>

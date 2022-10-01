@@ -1,0 +1,54 @@
+
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_layout"
+    android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/bottom_sheet_background_white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/bottom_sheet_padding"
+    android:layout_height="wrap_content"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="@dimen/bottom_sheet_peek_height"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Chevron indicating that the bottom sheet is expandable -->
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:contentDescription="@string/alt_bottom_sheet_chevron"
+                android:src="@drawable/ic_baseline_keyboard_arrow_up_24"
+                app:tint="?colorPrimaryDark" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/users_grocery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/users_grocery"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/items_list"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+</androidx.core.widget.NestedScrollView>

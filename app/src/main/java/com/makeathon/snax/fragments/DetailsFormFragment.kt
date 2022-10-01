@@ -38,11 +38,17 @@ class DetailsFormFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[ActivityViewModel::class.java]
         val isFromOtherScreen: Boolean = arguments?.getBoolean("isFromOtherScreen") == true
 
-        viewModel.userDetails?.run {
+        viewModel.userDetails.value?.run {
             fragmentDetailsFormBinding.nameEdittext.setText(name)
             fragmentDetailsFormBinding.ageEdittext.setText(age.toString())
             fragmentDetailsFormBinding.weightEdittext.setText(weight.toString())
             fragmentDetailsFormBinding.heightEdittext.setText(height.toString())
+            when(target){
+                ActivityViewModel.Target.MUSCLE -> fragmentDetailsFormBinding.radioMuscle.isChecked = true
+                ActivityViewModel.Target.DIET -> fragmentDetailsFormBinding.radioDiet.isChecked = true
+                ActivityViewModel.Target.MAINTAIN -> fragmentDetailsFormBinding.radioMaintain.isChecked = true
+            }
+            fragmentDetailsFormBinding.activityEdittext.setText(activityDaily.toString())
         }
 
         fragmentDetailsFormBinding.continueButton.setOnClickListener {
@@ -65,14 +71,24 @@ class DetailsFormFragment : Fragment() {
         val age = fragmentDetailsFormBinding.ageEdittext.text.toString().toIntOrNull()?:18
         val height = fragmentDetailsFormBinding.heightEdittext.text.toString().toIntOrNull()?:175
         val weight = fragmentDetailsFormBinding.weightEdittext.text.toString().toIntOrNull()?:75
+        val target = when(fragmentDetailsFormBinding.targetRadiogroup.checkedRadioButtonId){
+            R.id.radio_muscle -> ActivityViewModel.Target.MUSCLE
+            R.id.radio_diet -> ActivityViewModel.Target.DIET
+            R.id.radio_maintain -> ActivityViewModel.Target.MAINTAIN
+            else -> ActivityViewModel.Target.MUSCLE
 
-        viewModel.userDetails = ActivityViewModel.UserDetails(name, age, height, weight)
+        }
+        val activityDaily = fragmentDetailsFormBinding.activityEdittext.text.toString().toIntOrNull()?:2
+
+        viewModel.userDetails.value = ActivityViewModel.UserDetails(name, age, height, weight, target, activityDaily)
 
         val editor = requireContext().getSharedPreferences(getString(R.string.snax_prefs), Context.MODE_PRIVATE).edit()
         editor.putString("USER_NAME", name)
         editor.putInt("USER_AGE", age)
         editor.putInt("USER_HEIGHT", height)
         editor.putInt("USER_WEIGHT", weight)
+        editor.putString("USER_TARGET", target.name)
+        editor.putInt("USER_ACTIVITY", activityDaily)
         editor.putBoolean(getString(R.string.is_user_details_given), true)
         editor.apply()
     }

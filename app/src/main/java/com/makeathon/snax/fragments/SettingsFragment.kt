@@ -36,11 +36,13 @@ class SettingsFragment : Fragment() {
             navigateToForm()
         }
 
-        viewModel.userDetails?.run {
+        viewModel.userDetails.value?.run {
             fragmentSettingsBinding.userName.text = name
             fragmentSettingsBinding.userAge.text = getString(R.string.user_age, age)
             fragmentSettingsBinding.userWeight.text = getString(R.string.user_weight, weight)
             fragmentSettingsBinding.userHeight.text = getString(R.string.user_height, height)
+            fragmentSettingsBinding.userTarget.text = getString(R.string.user_target, target.name)
+            fragmentSettingsBinding.userActivity.text = getString(R.string.user_activity, activityDaily)
         }
 
     }
@@ -54,11 +56,13 @@ class SettingsFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        viewModel.userDetails?.run {
+        viewModel.userDetails.value?.run {
             fragmentSettingsBinding.userName.text = name
             fragmentSettingsBinding.userAge.text = getString(R.string.user_age, age)
             fragmentSettingsBinding.userWeight.text = getString(R.string.user_weight, weight)
             fragmentSettingsBinding.userHeight.text = getString(R.string.user_height, height)
+            fragmentSettingsBinding.userTarget.text = getString(R.string.user_target, target.name)
+            fragmentSettingsBinding.userActivity.text = getString(R.string.user_activity, activityDaily)
         }
     }
 

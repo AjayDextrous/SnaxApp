@@ -2,7 +2,6 @@
 
 
 <resources>
-    <!-- TF Branding Orange -->
     <color name="bounding_box_color">#FF6F00</color>
     <color name="toolbar_background">#EEEEEE</color>
     <color name="ic_launcher_background">#FFFFFF</color>
@@ -40,5 +39,14 @@
     <color name="pastel_yellow">#ffffba</color>
     <color name="pastel_green">#baffc9</color>
     <color name="pastel_blue">#bae1ff</color>
+
+    <color name="primaryColor">#4faeea</color>
+    <color name="primaryLightColor">#88e0ff</color>
+    <color name="primaryDarkColor">#007fb7</color>
+    <color name="secondaryColor">#4faeea</color>
+    <color name="secondaryLightColor">#88e0ff</color>
+    <color name="secondaryDarkColor">#007fb7</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="secondaryTextColor">#000000</color>
 
 </resources>

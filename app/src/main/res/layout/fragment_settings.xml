@@ -134,6 +134,17 @@
             android:textStyle="bold"
             android:text="@string/user_goals" />
 
+        <TextView
+            android:id="@+id/user_target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_goals"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:text="@string/user_target" />
+
 <!--     TODO   Add chart here-->
 
         <View
@@ -144,7 +155,7 @@
             android:layout_marginEnd="@dimen/divider_margin_settings"
             android:background="@color/settings_divider_color"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/user_goals"/>
+            app:layout_constraintTop_toBottomOf="@id/user_target"/>
 
         <TextView
             android:id="@+id/daily_activity"
@@ -157,6 +168,17 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:text="@string/daily_activitiy" />
+
+        <TextView
+            android:id="@+id/user_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/daily_activity"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:text="@string/user_activity" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
