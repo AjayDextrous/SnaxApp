@@ -9,11 +9,32 @@
 
     <com.github.mikephil.charting.charts.HorizontalBarChart
         android:id="@+id/barChart"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/chart_height"
+        android:layout_width="373dp"
+        android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.148" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="239dp"
+        android:layout_height="40dp"
+        android:text="Intake per day:"
+        android:textSize="30sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="60dp" />
+
+    <TextView
+        android:id="@+id/topic"
+        android:layout_width="322dp"
+        android:layout_height="41dp"
+        android:gravity="center"
+        android:text="1 day(s) of shopping"
+        android:textSize="35sp"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
