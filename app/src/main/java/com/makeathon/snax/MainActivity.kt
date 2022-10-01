@@ -20,6 +20,7 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.makeathon.snax.databinding.ActivityMainBinding
+import com.makeathon.snax.viewmodels.ActivityViewModel
 
 /**
  * Main entry point into our app. This app follows the single-activity pattern, and all
@@ -28,6 +29,7 @@ import com.makeathon.snax.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
+    private lateinit var activityViewModel: ActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

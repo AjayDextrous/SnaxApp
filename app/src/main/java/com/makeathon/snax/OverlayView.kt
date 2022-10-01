@@ -23,6 +23,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.RectF
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import java.util.LinkedList
@@ -109,6 +110,7 @@ class OverlayView(context: Context?, attrs: AttributeSet?) : View(context, attrs
       imageWidth: Int,
     ) {
         results = detectionResults
+        Log.d("SNAXAPP", "h: $imageHeight, w:$imageWidth")
 
         // PreviewView is in FILL_START mode. So we need to scale up the bounding box to match with
         // the size that the captured images will be displayed.

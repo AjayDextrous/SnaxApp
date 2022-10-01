@@ -45,7 +45,12 @@
             android:id="@+id/action_splash_to_enterdetails"
             app:destination="@id/enter_details"
             app:popUpTo="@id/permissions_fragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true" >
+            <argument
+                android:name="isFromOtherScreen"
+                app:argType="boolean"
+                android:defaultValue="false" />
+        </action>
 
     </fragment>
 
@@ -53,6 +58,17 @@
         android:id="@+id/enter_details"
         android:name="com.makeathon.snax.fragments.DetailsFormFragment"
         android:label="EnterDetailsFragment">
+
+        <action
+            android:id="@+id/action_details_to_camera"
+            app:destination="@id/camera_fragment"
+            app:popUpTo="@id/enter_details"
+            app:popUpToInclusive="true" />
+
+        <argument
+            android:name="isFromOtherScreen"
+            app:argType="boolean"
+            android:defaultValue="true" />
 
     </fragment>
 
@@ -68,5 +84,36 @@
             app:popUpTo="@id/camera_fragment"
             app:popUpToInclusive="true"/>
 
+        <action
+            android:id="@+id/action_camera_to_analysys"
+            app:destination="@id/analysis_fragment" />
+
+        <action
+            android:id="@+id/action_camera_to_settings"
+            app:destination="@id/settings"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/settings"
+        android:name="com.makeathon.snax.fragments.SettingsFragment"
+        android:label="SettingsFragment">
+
+        <action android:id="@+id/action_settings_to_enterdetails"
+            app:destination="@id/enter_details"/>
+
+    </fragment>
+
+<!--    app:enterAnim="@android:anim/slide_in_left"-->
+<!--    app:exitAnim="@android:anim/slide_out_right"-->
+<!--    app:popExitAnim="@android:anim/slide_out_right"-->
+
+    <fragment android:id="@+id/analysis_fragment"
+        android:name="com.makeathon.snax.fragments.AnalysisFragment"
+        android:label="AnalysisFragment">
+
+        <action
+            android:id="@+id/action_analysis_fragment_to_settings"
+            app:destination="@id/settings" />
     </fragment>
 </navigation>

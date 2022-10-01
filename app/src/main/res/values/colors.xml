@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    ~ Copyright 2022 The TensorFlow Authors. All Rights Reserved.
-    ~
-    ~ Licensed under the Apache License, Version 2.0 (the "License");
-    ~ you may not use this file except in compliance with the License.
-    ~ You may obtain a copy of the License at
-    ~
-    ~       http://www.apache.org/licenses/LICENSE-2.0
-    ~
-    ~ Unless required by applicable law or agreed to in writing, software
-    ~ distributed under the License is distributed on an "AS IS" BASIS,
-    ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    ~ See the License for the specific language governing permissions and
-    ~ limitations under the License.
--->
+
 
 <resources>
     <!-- TF Branding Orange -->
     <color name="bounding_box_color">#FF6F00</color>
     <color name="toolbar_background">#EEEEEE</color>
     <color name="ic_launcher_background">#FFFFFF</color>
-    <color name="bottom_sheet_background">#EEEEEE</color>
+    <color name="bottom_sheet_background">@color/zimgur_blue_300</color>
     <color name="bottom_sheet_text_color">@android:color/black</color>
     <color name="icActive">#FFFFFFFF</color>
     <color name="icFocused">#DDFFFFFF</color>
     <color name="icPressed">#AAFFFFFF</color>
+
+    <color name="zimgur_blue_50">#eef0f2</color>
+    <color name="zimgur_blue_200">#adc0cb</color>
+    <color name="zimgur_blue_300">#8da6b5</color>
+    <color name="zimgur_blue_800">#344955</color>
+    <color name="zimgur_blue_900">#23343e</color>
+
+    <color name="zimgur_yellow_100">#fcecb3</color>
+    <color name="zimgur_yellow_200">#fadf82</color>
+    <color name="zimgur_yellow_500">#f7c00b</color>
+    <color name="zimgur_yellow_600">#f7b201</color>
+
+    <color name="zimgur_red_200">#cf7779</color>
+    <color name="zimgur_red_400">#ff4c5d</color>
+    <color name="title_text_color">#A9A9A9</color>
+    <color name="settings_divider_color">@color/cardview_light_background</color>
 </resources>
