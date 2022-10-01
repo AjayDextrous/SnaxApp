@@ -17,6 +17,7 @@
     <dimen name="edit_text_height">70dp</dimen>
     <dimen name="divider_margin_settings">16dp</dimen>
     <dimen name="divider_height_settings">1px</dimen>
+    <dimen name="chart_height">150dp</dimen>
 
     <integer name="bottom_sheet_control_text_min_ems">3</integer>
 </resources>

@@ -114,7 +114,7 @@ class PermissionsFragment : Fragment() {
     companion object {
 
         const val TAG = "SNAXAPP"
-        const val isChartDebuggingOn = true
+        const val isChartDebuggingOn = false
 
         /** Convenience method used to check if all permissions required by this app are granted */
         fun hasPermissions(context: Context) = PERMISSIONS_REQUIRED.all {

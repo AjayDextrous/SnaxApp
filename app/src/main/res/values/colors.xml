@@ -27,4 +27,18 @@
     <color name="zimgur_red_400">#ff4c5d</color>
     <color name="title_text_color">#A9A9A9</color>
     <color name="settings_divider_color">@color/cardview_light_background</color>
+
+
+    <color name="calorie_color">@color/pastel_red</color>
+    <color name="protein_color">@color/pastel_blue</color>
+    <color name="fat_color">@color/pastel_orange</color>
+    <color name="carb_color">@color/pastel_green</color>
+
+
+    <color name="pastel_red">#ffb3ba</color>
+    <color name="pastel_orange">#ffdfba</color>
+    <color name="pastel_yellow">#ffffba</color>
+    <color name="pastel_green">#baffc9</color>
+    <color name="pastel_blue">#bae1ff</color>
+
 </resources>
