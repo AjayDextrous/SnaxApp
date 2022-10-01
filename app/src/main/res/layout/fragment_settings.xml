@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/cardview_dark_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".fragments.SettingsFragment">
+
+        <ImageView
+            android:id="@+id/user_avatar"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_baseline_add_a_photo_24"
+            android:background="@drawable/rounded_block_primary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:id="@+id/edit_details"
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:padding="12dp"
+            android:src="@drawable/ic_baseline_edit_24"
+            android:background="@drawable/phone_outline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/user_avatar"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:text="User Name" />
+
+        <TextView
+            android:id="@+id/user_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user@email.com"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/user_avatar"
+            app:layout_constraintTop_toBottomOf="@id/user_name"
+            android:layout_marginStart="12dp"/>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height_settings"
+            android:background="@color/settings_divider_color"
+            android:layout_marginStart="@dimen/divider_margin_settings"
+            android:layout_marginEnd="@dimen/divider_margin_settings"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/user_avatar"/>
+
+        <TextView
+            android:id="@+id/user_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/divider1"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="@string/user_details" />
+
+        <TextView
+            android:id="@+id/user_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_details"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="12sp"
+            android:text="@string/user_age" />
+
+        <TextView
+            android:id="@+id/user_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_age"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:text="@string/user_weight" />
+
+        <TextView
+            android:id="@+id/user_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/user_weight"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textSize="12sp"
+            android:text="@string/user_height" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height_settings"
+            android:layout_marginStart="@dimen/divider_margin_settings"
+            android:layout_marginEnd="@dimen/divider_margin_settings"
+            android:background="@color/settings_divider_color"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/user_height"/>
+
+        <TextView
+            android:id="@+id/user_goals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/divider2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="@string/user_goals" />
+
+<!--     TODO   Add chart here-->
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_height_settings"
+            android:layout_marginStart="@dimen/divider_margin_settings"
+            android:layout_marginEnd="@dimen/divider_margin_settings"
+            android:background="@color/settings_divider_color"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/user_goals"/>
+
+        <TextView
+            android:id="@+id/daily_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/divider3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:text="@string/daily_activitiy" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

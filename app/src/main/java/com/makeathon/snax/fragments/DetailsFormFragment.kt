@@ -35,10 +35,24 @@ class DetailsFormFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = ViewModelProvider(requireActivity())[ActivityViewModel::class.java]
+        val isFromOtherScreen: Boolean = arguments?.getBoolean("isFromOtherScreen") == true
+
+        viewModel.userDetails?.run {
+            fragmentDetailsFormBinding.nameEdittext.setText(name)
+            fragmentDetailsFormBinding.ageEdittext.setText(age.toString())
+            fragmentDetailsFormBinding.weightEdittext.setText(weight.toString())
+            fragmentDetailsFormBinding.heightEdittext.setText(height.toString())
+        }
 
         fragmentDetailsFormBinding.continueButton.setOnClickListener {
             saveDetails()
-            navigateToCamera()
+
+            if(isFromOtherScreen){
+                activity?.onBackPressed()
+            } else {
+                navigateToCamera()
+            }
         }
     }
 
@@ -61,11 +75,6 @@ class DetailsFormFragment : Fragment() {
         editor.putInt("USER_WEIGHT", weight)
         editor.putBoolean(getString(R.string.is_user_details_given), true)
         editor.apply()
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(requireActivity()).get(ActivityViewModel::class.java)
     }
 
     private fun navigateToCamera() {

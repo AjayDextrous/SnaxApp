@@ -18,6 +18,8 @@
             android:id="@+id/name_edittext"
             android:layout_width="match_parent"
             android:inputType="textPersonName"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:layout_height="@dimen/edit_text_height"
             android:hint="@string/your_name"/>
 

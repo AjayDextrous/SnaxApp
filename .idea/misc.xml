@@ -8,11 +8,13 @@
         <entry key="app/src/main/res/drawable/phone_outline.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/rounded_block_primary.xml" value="0.2595" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.2935" />
+        <entry key="app/src/main/res/drawable/title_block_primary.xml" value="0.274" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.49206349206349204" />
         <entry key="app/src/main/res/layout/fragment_analysis.xml" value="0.24868367513020828" />
         <entry key="app/src/main/res/layout/fragment_camera.xml" value="0.290625" />
         <entry key="app/src/main/res/layout/fragment_details_form.xml" value="0.24547101449275363" />
         <entry key="app/src/main/res/layout/fragment_m_p_chart_test.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.5911458333333334" />
         <entry key="app/src/main/res/layout/fragment_splash.xml" value="0.5192708333333333" />
         <entry key="app/src/main/res/layout/info_bottom_sheet.xml" value="0.290625" />
         <entry key="app/src/main/res/layout/results_list_item.xml" value="0.3640625" />

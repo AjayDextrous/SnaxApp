@@ -34,7 +34,7 @@
         android:id="@+id/enter_details_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your Details"
+        android:text="@string/enter_your_details"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

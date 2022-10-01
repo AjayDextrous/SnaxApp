@@ -102,6 +102,18 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         fragmentCameraBinding.takePhoto.setOnClickListener {
             takePhoto()
         }
+
+        fragmentCameraBinding.settings.setOnClickListener {
+            navigateToSettings()
+        }
+    }
+
+    private fun navigateToSettings() {
+        lifecycleScope.launchWhenStarted {
+            Navigation.findNavController(requireActivity(), R.id.fragment_container).navigate(
+                CameraFragmentDirections.actionCameraToSettings()
+            )
+        }
     }
 
     private fun loadUserDetails() {

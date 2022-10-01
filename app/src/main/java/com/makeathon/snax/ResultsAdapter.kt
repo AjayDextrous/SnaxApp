@@ -8,8 +8,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import org.tensorflow.lite.task.vision.detector.Detection
 
-class ResultsAdapter(val results: MutableList<Detection>): RecyclerView.Adapter<ResultsViewHolder>() {
+class ResultsAdapter( var results: MutableList<Detection>): RecyclerView.Adapter<ResultsViewHolder>() {
 
+    //TODO: merge duplicate items, etc.
     init {
         Log.d("SNAXAPP", "results = ${results.size}")
     }
@@ -24,7 +25,7 @@ class ResultsAdapter(val results: MutableList<Detection>): RecyclerView.Adapter<
         Log.d("SNAXAPP", "categories = ${categories.map { "${it.label}=${it.score}, " }}")
         val majorCategory = categories.maxWithOrNull(compareBy { it.score })
         Log.d("SNAXAPP", "category major = ${majorCategory?.label}")
-        val displayName = majorCategory?.label ?: "Null"
+        val displayName = majorCategory?.label?.capitalize() ?: "Null"
         holder.itemName.text = displayName
     }
 
