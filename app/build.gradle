@@ -36,8 +36,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility rootProject.ext.java_version
-        targetCompatibility rootProject.ext.java_version
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -123,4 +123,7 @@ dependencies {
     // Import the GPU delegate plugin Library for GPU inference
     implementation 'org.tensorflow:tensorflow-lite-gpu-delegate-plugin:0.4.0'
     implementation 'org.tensorflow:tensorflow-lite-gpu:2.9.0'
+
+    //MPChart files
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }
