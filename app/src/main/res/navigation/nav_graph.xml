@@ -33,7 +33,7 @@
 
     <fragment
         android:id="@+id/chart_test"
-        android:name="com.makeathon.snax.fragments.MPChartTestFragment"
+        android:name="com.makeathon.snax.fragments.MPChartTestFragmentJava"
         android:label="ChartTestFragment"/>
 
     <fragment

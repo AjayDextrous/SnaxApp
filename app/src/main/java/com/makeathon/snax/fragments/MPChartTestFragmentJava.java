@@ -25,6 +25,7 @@ public class MPChartTestFragmentJava extends AppCompatActivity {
         categories = new HashMap<>();
         lastUpdate = new HashMap<>();
         creatingCategories();
+        createChart();
     }
 
     private void creatingCategories(){
