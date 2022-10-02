@@ -6,6 +6,7 @@ import androidx.camera.core.ImageProxy
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.makeathon.snax.CSVReader
+import com.makeathon.snax.Info
 import org.tensorflow.lite.task.vision.detector.Detection
 import java.io.IOException
 
@@ -15,7 +16,7 @@ class ActivityViewModel(val app: Application) : AndroidViewModel(app) {
         MUSCLE(0), DIET(1), MAINTAIN(2)
     }
 
-    private lateinit var nutritionalInfo: MutableList<List<String>>
+    var nutritionalInfo: MutableMap<String, MutableMap<Info, String>>? = null
 
     class UserDetails(var name: String, var age: Int, var height: Int, var weight: Int, var target: Target, var activityDaily: Int)
 
@@ -27,16 +28,17 @@ class ActivityViewModel(val app: Application) : AndroidViewModel(app) {
 
     var latestResultsLiveData : MutableLiveData<MutableList<Detection>> = MutableLiveData()
 
-    fun loadNutritionalInfo(){
+    fun loadNutritionalInfo(): MutableMap<String, MutableMap<Info, String>>? {
         val csvReader = CSVReader(app.applicationContext, "nutritional_info.csv")
         try {
             nutritionalInfo = csvReader.readCSV()
         } catch (e: IOException) {
             e.printStackTrace()
         }
-        for ((index, info) in nutritionalInfo.withIndex()){
-            Log.d("SNAXAPP", " ${index}. $info")
-        }
+//        for ((index, info) in nutritionalInfo.withIndex()){
+//            Log.d("SNAXAPP", " ${index}. $info")
+//        }
+        return nutritionalInfo
     }
 
     fun setCapturedImage(imageProxy: ImageProxy){

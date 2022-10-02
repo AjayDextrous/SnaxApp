@@ -6,6 +6,10 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
 
+enum class Info{
+    CALORIES, PROTEIN, CARBS, SUGAR, FAT, SATURATED, ALTERNATIVE
+}
+
 class CSVReader(context: Context, fileName: String) {
     var context: Context
     var fileName: String
@@ -17,7 +21,9 @@ class CSVReader(context: Context, fileName: String) {
     }
 
     @Throws(IOException::class)
-    fun readCSV(): MutableList<List<String>> {
+    fun readCSV(): MutableMap<String, MutableMap<Info,String>> {
+
+        val info = mutableMapOf<String, MutableMap<Info, String>>()
         val ins: InputStream = context.assets.open(fileName)
         val isr = InputStreamReader(ins)
         val br = BufferedReader(isr)
@@ -28,9 +34,17 @@ class CSVReader(context: Context, fileName: String) {
             val row = line?.split(csvSplitBy)
             if (row != null) {
                 rows.add(row)
+                info[row[0]] = mutableMapOf()
+                info[row[0]]?.set(Info.CALORIES, row[1])
+                info[row[0]]?.set(Info.PROTEIN, row[2])
+                info[row[0]]?.set(Info.CARBS, row[3])
+                info[row[0]]?.set(Info.SUGAR, row[4])
+                info[row[0]]?.set(Info.FAT, row[5])
+                info[row[0]]?.set(Info.SATURATED, row[6])
+                info[row[0]]?.set(Info.ALTERNATIVE, row[7])
             }
         }
         ins.close()
-        return rows
+        return info
     }
 }

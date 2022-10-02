@@ -121,6 +121,65 @@
                 />
         </androidx.cardview.widget.CardView>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tip_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:layout_marginTop="6dp"
+            app:cardCornerRadius="15dp"
+            app:cardBackgroundColor="@color/zimgur_blue_900"
+            app:layout_constraintTop_toBottomOf="@id/chart_card"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:animateLayoutChanges="true"
+                    android:orientation="horizontal"
+                    android:layout_gravity="end|center_vertical"
+                    android:gravity="end">
+                    <ImageView
+                        android:id="@+id/tip_icon"
+                        android:layout_width="16dp"
+                        android:layout_gravity="end|center_vertical"
+                        android:layout_height="16dp"
+                        android:layout_margin="8dp"
+                        android:src="@drawable/ic_baseline_info_24"
+                        android:scaleType="fitXY"/>
+
+                    <TextView
+                        android:id="@+id/tip_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:padding="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:visibility="gone"
+                        android:text="Tip"/>
+
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tip_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:alpha="0.8"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone"
+                    android:text="@string/we_have_no_suggestions_for_you"/>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include

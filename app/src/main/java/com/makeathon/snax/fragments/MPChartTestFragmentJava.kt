@@ -73,11 +73,11 @@ class MPChartTestFragmentJava : Fragment() {
         createChart()
 
         fragmentMPChartTestBinding.root.setOnClickListener {
-            if(fragmentMPChartTestBinding.barChart.visibility == View.VISIBLE){
-                fragmentMPChartTestBinding.barChart.visibility = View.GONE
+            if(fragmentMPChartTestBinding.barChartContainer.visibility == View.VISIBLE){
+                fragmentMPChartTestBinding.barChartContainer.visibility = View.GONE
                 fragmentMPChartTestBinding.macrosLayout.visibility = View.VISIBLE
             } else {
-                fragmentMPChartTestBinding.barChart.visibility = View.VISIBLE
+                fragmentMPChartTestBinding.barChartContainer.visibility = View.VISIBLE
                 fragmentMPChartTestBinding.macrosLayout.visibility = View.GONE
             }
         }

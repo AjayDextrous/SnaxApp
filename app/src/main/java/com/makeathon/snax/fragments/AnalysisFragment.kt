@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.camera.core.ImageProxy
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -60,7 +59,7 @@ class AnalysisFragment : Fragment() {
     }
 
     private fun setAdapterToResults() {
-        val adapter: ResultsAdapter = ResultsAdapter(viewModel.retrieveLatestResults()!!)
+        val adapter: ResultsAdapter = ResultsAdapter(requireContext(), viewModel.retrieveLatestResults()!!, viewModel.nutritionalInfo)
         fragmentAnalysisBinding.itemsList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         fragmentAnalysisBinding.itemsList.adapter = adapter
     }

@@ -63,4 +63,7 @@
     <string name="user_target">Your current target is %s</string>
     <string name="user_activity">You are active for <b>%d</b> hours</string>
     <string name="your_activity">Daily activity (in hours)</string>
+    <string name="calories">%s kCal</string>
+    <string name="grams">%s g</string>
+    <string name="we_have_no_suggestions_for_you">We have no suggestions for you</string>
 </resources>

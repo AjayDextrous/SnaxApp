@@ -9,7 +9,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.Toast
 import androidx.camera.core.*
 import androidx.camera.core.ImageAnalysis.OUTPUT_IMAGE_FORMAT_RGBA_8888
@@ -90,7 +89,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         fragmentCameraBinding.bottomSheetLayout.itemsList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
 
         viewModel.latestResultsLiveData.observe(viewLifecycleOwner){
-            val adapter: ResultsAdapter = ResultsAdapter(it)
+            val adapter: ResultsAdapter = ResultsAdapter(requireContext(), it, viewModel.nutritionalInfo)
             fragmentCameraBinding.bottomSheetLayout.itemsList.adapter = adapter
             adapter.notifyDataSetChanged()
         }
@@ -100,7 +99,10 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         loadUserDetails()
         objectDetectorHelper = ObjectDetectorHelper(
             context = requireContext(),
-            objectDetectorListener = this)
+            objectDetectorListener = this, threshold = 0.3f, maxResults = 7)
+
+//        objectDetectorHelper.threshold = 0.3f
+//        objectDetectorHelper.maxResults = 7
 
         // Initialize our background executor
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -116,6 +118,19 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
         fragmentCameraBinding.takePhoto.setOnClickListener {
             takePhoto()
+        }
+
+        fragmentCameraBinding.tipCard.setOnClickListener {
+            fragmentCameraBinding.tipDetails.visibility = if(fragmentCameraBinding.tipDetails.visibility == View.VISIBLE) {
+                View.GONE
+            } else {
+                View.VISIBLE
+            }
+            fragmentCameraBinding.tipText.visibility = if(viewModel.latestResultsLiveData.value == null && fragmentCameraBinding.tipText.visibility == View.VISIBLE) {
+                View.GONE
+            } else {
+                View.VISIBLE
+            }
         }
 
         fragmentCameraBinding.settings.setOnClickListener {
@@ -370,23 +385,28 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
     }
 
     private fun takePhoto() {
-        imageCapture.takePicture( cameraExecutor,
-            object : ImageCapture.OnImageCapturedCallback() {
-                override fun onCaptureSuccess(image: ImageProxy) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(requireContext(), "Photo Captured Successfully", Toast.LENGTH_SHORT).show()
-                        viewModel.setCapturedImage(image)
-                        viewModel.notifyResultsUpdate()
-//                        navigateToAnalysisScreen()
-                    }
-                }
-                override fun onError(exception: ImageCaptureException) {
-                    requireActivity().runOnUiThread {
-                        Toast.makeText(requireContext(), "Error ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()
-                    }
 
-                }
-            })
+        viewModel.notifyResultsUpdate()
+        Toast.makeText(requireContext(), "Photo Captured Successfully", Toast.LENGTH_SHORT).show()
+        fragmentCameraBinding.tipText.visibility = View.VISIBLE
+
+//        imageCapture.takePicture( cameraExecutor,
+//            object : ImageCapture.OnImageCapturedCallback() {
+//                override fun onCaptureSuccess(image: ImageProxy) {
+//                    requireActivity().runOnUiThread {
+//                        Toast.makeText(requireContext(), "Photo Captured Successfully", Toast.LENGTH_SHORT).show()
+//                        viewModel.setCapturedImage(image)
+//                        viewModel.notifyResultsUpdate()
+////                        navigateToAnalysisScreen()
+//                    }
+//                }
+//                override fun onError(exception: ImageCaptureException) {
+//                    requireActivity().runOnUiThread {
+//                        Toast.makeText(requireContext(), "Error ${exception.localizedMessage}", Toast.LENGTH_SHORT).show()
+//                    }
+//
+//                }
+//            })
     }
 
     private fun navigateToAnalysisScreen() {

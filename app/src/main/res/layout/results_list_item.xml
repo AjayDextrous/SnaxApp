@@ -2,18 +2,132 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/item_name"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="List Item"
         android:background="@drawable/rounded_block_primary"
-        android:textColor="@android:color/black"
-        android:textSize="16sp"
-        android:layout_margin="4dp"
-        android:padding="12dp"/>
+        android:layout_margin="2dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="List Item"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:layout_marginStart="18dp"
+            android:padding="8dp"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/macros_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <View
+                android:id="@+id/cal_macro_icon"
+                android:layout_width="@dimen/macro_icon_size"
+                android:layout_height="16dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/macro_icon"
+                android:backgroundTint="@color/calorie_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cal_count"
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cal_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="1800 kCal"
+                android:textColor="@color/cardview_dark_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/protein_count"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/protein_macro_icon"
+                android:layout_width="@dimen/macro_icon_size"
+                android:layout_height="16dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/macro_icon"
+                android:backgroundTint="@color/protein_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/protein_count"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/protein_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="36g"
+                android:textColor="@color/cardview_dark_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fat_count"
+                app:layout_constraintStart_toEndOf="@id/cal_count"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/fat_macro_icon"
+                android:layout_width="@dimen/macro_icon_size"
+                android:layout_height="16dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/macro_icon"
+                android:backgroundTint="@color/fat_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/fat_count"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fat_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="18g"
+                android:textColor="@color/cardview_dark_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/protein_count"
+                app:layout_constraintStart_toEndOf="@id/carb_count"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/carb_macro_icon"
+                android:layout_width="@dimen/macro_icon_size"
+                android:layout_height="16dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/macro_icon"
+                android:backgroundTint="@color/carb_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/carb_count"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/carb_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="26g"
+                android:textColor="@color/cardview_dark_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/fat_count"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </LinearLayout>
