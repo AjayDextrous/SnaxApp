@@ -16,6 +16,7 @@ class ActivityViewModel(val app: Application) : AndroidViewModel(app) {
         MUSCLE(0), DIET(1), MAINTAIN(2)
     }
 
+    var shoppingDays: Int = 2
     var nutritionalInfo: MutableMap<String, MutableMap<Info, String>>? = null
 
     class UserDetails(var name: String, var age: Int, var height: Int, var weight: Int, var target: Target, var activityDaily: Int)
