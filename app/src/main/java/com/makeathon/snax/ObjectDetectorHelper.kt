@@ -68,7 +68,7 @@ class ObjectDetectorHelper(
 
         optionsBuilder.setBaseOptions(baseOptionsBuilder.build())
 
-        val modelName ="mk4_model.tflite"
+        val modelName ="mk5_model.tflite"
 
 //            when (currentModel) {
 //                MODEL_MOBILENETV1 -> "mobilenetv1.tflite"

@@ -1,114 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/cardview_dark_background"
-    android:padding="24dp"
-    android:orientation="vertical"
-    tools:context=".fragments.DetailsFormFragment">
+    android:background="@color/cardview_dark_background">
 
-    <com.google.android.material.textfield.TextInputLayout
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:orientation="vertical"
+        android:padding="24dp"
+        tools:context=".fragments.DetailsFormFragment">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/name_edittext"
-            android:layout_width="match_parent"
-            android:inputType="textPersonName"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:layout_height="@dimen/edit_text_height"
-            android:hint="@string/your_name"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/age_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edit_text_height"
-            android:inputType="number"
-            android:hint="@string/your_age"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/height_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edit_text_height"
-            android:inputType="number"
-            android:hint="@string/your_height"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/weight_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edit_text_height"
-            android:inputType="number"
-            android:hint="@string/your_weight"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <RadioGroup
-        android:id="@+id/target_radiogroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RadioButton
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/radio_muscle"
-            android:text="@string/muscle"/>
-        <RadioButton
+            android:layout_marginBottom="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/your_name"
+                android:inputType="textPersonName" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/radio_diet"
-            android:text="@string/diet"/>
-        <RadioButton
+            android:layout_marginBottom="8dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/age_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:hint="@string/your_age"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/radio_maintain"
-            android:text="@string/maintain"/>
-    </RadioGroup>
+            android:layout_marginBottom="8dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/height_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:hint="@string/your_height"
+                android:inputType="number" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/activity_edittext"
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/edit_text_height"
-            android:inputType="number"
-            android:hint="@string/your_activity"/>
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/weight_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:hint="@string/your_weight"
+                android:inputType="number" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/continue_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/continue_next"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <RadioGroup
+            android:id="@+id/target_radiogroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-</LinearLayout>
+            <RadioButton
+                android:id="@+id/radio_muscle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/muscle" />
+
+            <RadioButton
+                android:id="@+id/radio_diet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/diet" />
+
+            <RadioButton
+                android:id="@+id/radio_maintain"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/maintain" />
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/activity_edittext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:hint="@string/your_activity"
+                android:inputType="number" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/continue_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/continue_next" />
+
+    </LinearLayout>
+</ScrollView>
